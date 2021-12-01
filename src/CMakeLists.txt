@@ -38,12 +38,7 @@ install (TARGETS backward DESTINATION ${LIB_INSTALL_DIR})
 
 #===============================================================================
 # Used for the installed version.
-if(APPLE)
-  # On macOS, the full path to the library since DYLD_LIBRARY_PATH may not work.
-  set(backward_library_name ${CMAKE_INSTALL_FULL_LIBDIR}/$<TARGET_FILE_NAME:backward>)
-else()
-  set(backward_library_name $<TARGET_FILE_NAME:backward>)
-endif()
+set(backward_library_name ${CMAKE_INSTALL_FULL_LIBDIR}/$<TARGET_FILE_NAME:backward>)
 
 # Two steps to create `ign`, First using `configure_file`, to interpolate cmake variables. Then
 # use `file(GENERATE ...)` to use generator expressions
